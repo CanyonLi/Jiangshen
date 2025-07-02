@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<title>将神下饭杯｜赛程示意</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+:root{
+  --bg:#0a0c12;
+  --panel:#161925;
+  --slot:#212533;
+  --accent:#f5c549;
+  --txt:#e7eaf4;
+  --sub:#9399b0;
+  font-family:"Segoe UI",Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--txt);padding:60px 20px}
+.wrapper{max-width:1400px;margin:auto;display:flex;flex-direction:column;gap:72px}
+h2{font-size:26px;margin-bottom:20px;color:var(--accent)}
+
+.section{display:flex;justify-content:space-between;gap:80px;flex-wrap:wrap}
+.card{
+  background:var(--panel);
+  border-radius:16px;
+  padding:32px 48px;
+  flex:1 1 380px;
+}
+
+/* 分组 */
+.group-list{display:flex;gap:80px;justify-content:center}
+.group-name{font-size:22px;color:var(--accent);margin-bottom:24px;text-align:center}
+.slot{
+  background:var(--slot);
+  border-radius:12px;
+  padding:12px 0;
+  margin-bottom:14px;
+  text-align:center;
+  font-size:17px;
+  color:var(--sub);
+}
+
+/* 比赛卡片 */
+.bracket{min-width:420px;padding:38px 54px}
+.match{
+  background:var(--slot);
+  border-radius:10px;
+  padding:12px 18px;
+  margin:26px 0;
+  text-align:center;
+  font-size:16px;
+}
+.highlight{background:var(--accent);color:#222;font-weight:bold}
+
+/* 隐藏连线 */
+.match::before,
+.match::after{display:none !important}
+
+/* 决赛 */
+.final{flex:1 1 460px;text-align:center}
+.final .match{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-weight:bold;
+  background:transparent;
+  margin:26px 0 32px 0;
+  gap:12px;
+}
+.final .match span{
+  flex:0 0 45%;
+  background:var(--slot);
+  padding:14px 0;
+  border-radius:10px;
+}
+.final .cup{font-size:20px;font-weight:bold;color:var(--accent);margin-top:32px}
+.small{font-size:15px;color:var(--sub);margin-top:8px}
+
+@media(max-width:900px){
+  .card{flex:1 1 100%}
+  .bracket,.final{min-width:280px}
+  .final{flex:1 1 100%}
+  .section{gap:40px}
+}
+</style>
+</head>
+
+<body>
+<div class="wrapper">
+
+  <!-- ① 分组结果 -->
+  <section class="section" id="groups">
+    <div class="card">
+      <h2>① 分组结果 <span style="font-size:18px;color:var(--sub)">随机抽签</span></h2>
+      <div class="group-list">
+        <div>
+          <p class="group-name">A 组</p>
+          <div class="slot">TPOF</div>
+          <div class="slot">SMFG</div>
+          <div class="slot">TR</div>
+        </div>
+        <div>
+          <p class="group-name">B 组</p>
+          <div class="slot">NYD</div>
+          <div class="slot">LGMM</div>
+          <div class="slot">OUO</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ② A / B 组赛程 -->
+  <section class="section" id="brackets">
+
+    <!-- A 组 -->
+    <div class="card bracket a">
+      <h2>② A 组赛程 <span style="font-size:18px;color:var(--sub)">BO3</span></h2>
+
+      <div class="match">
+        Match&nbsp;1 ｜ TPOF vs SMFG
+        <span style="display:block;color:var(--sub);font-size:14px;margin-top:4px">（胜者直通 Match&nbsp;3）</span>
+      </div>
+
+      <div class="match">
+        Match&nbsp;2 ｜ <span style="color:var(--sub);font-size:14px">Match&nbsp;1 败者</span> vs TR
+      </div>
+
+      <div class="match highlight">
+        Match&nbsp;3 ｜ <span style="color:#222">Match&nbsp;1 胜者 vs Match&nbsp;2 胜者</span><br>
+        <span style="font-size:14px">组内决赛</span>
+      </div>
+    </div>
+
+    <!-- B 组 -->
+    <div class="card bracket b">
+      <h2>② B 组赛程 <span style="font-size:18px;color:var(--sub)">BO3</span></h2>
+
+      <div class="match">
+        Match&nbsp;1 ｜ NYD vs LGMM
+        <span style="display:block;color:var(--sub);font-size:14px;margin-top:4px">（胜者直通 Match&nbsp;3）</span>
+      </div>
+
+      <div class="match">
+        Match&nbsp;2 ｜ <span style="color:var(--sub);font-size:14px">Match&nbsp;1 败者</span> vs OUO
+      </div>
+
+      <div class="match highlight">
+        Match&nbsp;3 ｜ <span style="color:#222">Match&nbsp;1 胜者 vs Match&nbsp;2 胜者</span><br>
+        <span style="font-size:14px">组内决赛</span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ③ 总决赛 -->
+  <section class="section" id="final">
+    <div class="card final">
+      <h2>③ 总决赛 <span style="font-size:18px;color:var(--sub)">BO5</span></h2>
+
+      <div class="match">
+        <span>A 组冠军</span>
+        <span>B 组冠军</span>
+      </div>
+
+      <div class="cup">最终冠军</div>
+      <p class="small">五局三胜（BO5）</p>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
