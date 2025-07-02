@@ -50,6 +50,8 @@ h2{font-size:26px;margin-bottom:20px;color:var(--accent)}
   text-align:center;
   font-size:16px;
 }
+.time{display:block;color:var(--sub);font-size:14px;margin-top:4px}
+.note{display:block;color:var(--sub);font-size:14px;margin-top:2px}
 .highlight{background:var(--accent);color:#222;font-weight:bold}
 
 /* 隐藏连线 */
@@ -60,14 +62,16 @@ h2{font-size:26px;margin-bottom:20px;color:var(--accent)}
 .final{flex:1 1 460px;text-align:center}
 .final .match{
   display:flex;
-  justify-content:space-between;
-  align-items:center;
+  flex-direction:column;
   font-weight:bold;
   background:transparent;
   margin:26px 0 32px 0;
-  gap:12px;
+  gap:8px;
 }
-.final .match span{
+.final .teams{
+  display:flex;justify-content:space-between;gap:12px
+}
+.final .teams span{
   flex:0 0 45%;
   background:var(--slot);
   padding:14px 0;
@@ -118,16 +122,19 @@ h2{font-size:26px;margin-bottom:20px;color:var(--accent)}
 
       <div class="match">
         Match&nbsp;1 ｜ TPOF vs SMFG
-        <span style="display:block;color:var(--sub);font-size:14px;margin-top:4px">（胜者直通 Match&nbsp;3）</span>
+        <span class="time">7月5日（周六）15:30–17:00</span>
+        <span class="note">（胜者直通 Match&nbsp;3）</span>
       </div>
 
       <div class="match">
-        Match&nbsp;2 ｜ <span style="color:var(--sub);font-size:14px">Match&nbsp;1 败者</span> vs TR
+        Match&nbsp;2 ｜ <span style="color:var(--sub)">Match&nbsp;1 败者</span> vs TR
+        <span class="time">7月12日（周六）15:30–17:00</span>
       </div>
 
       <div class="match highlight">
-        Match&nbsp;3 ｜ <span style="color:#222">Match&nbsp;1 胜者 vs Match&nbsp;2 胜者</span><br>
-        <span style="font-size:14px">组内决赛</span>
+        Match&nbsp;3 ｜ Match&nbsp;1 胜者 vs Match&nbsp;2 胜者
+        <span class="time">7月18日（周五）15:30–17:00</span>
+        <span class="note">组内决赛</span>
       </div>
     </div>
 
@@ -137,16 +144,19 @@ h2{font-size:26px;margin-bottom:20px;color:var(--accent)}
 
       <div class="match">
         Match&nbsp;1 ｜ NYD vs LGMM
-        <span style="display:block;color:var(--sub);font-size:14px;margin-top:4px">（胜者直通 Match&nbsp;3）</span>
+        <span class="time">7月6日（周日）15:30–17:00</span>
+        <span class="note">（胜者直通 Match&nbsp;3）</span>
       </div>
 
       <div class="match">
-        Match&nbsp;2 ｜ <span style="color:var(--sub);font-size:14px">Match&nbsp;1 败者</span> vs OUO
+        Match&nbsp;2 ｜ <span style="color:var(--sub)">Match&nbsp;1 败者</span> vs OUO
+        <span class="time">7月13日（周日）15:30–17:00</span>
       </div>
 
       <div class="match highlight">
-        Match&nbsp;3 ｜ <span style="color:#222">Match&nbsp;1 胜者 vs Match&nbsp;2 胜者</span><br>
-        <span style="font-size:14px">组内决赛</span>
+        Match&nbsp;3 ｜ Match&nbsp;1 胜者 vs Match&nbsp;2 胜者
+        <span class="time">7月19日（周六）15:30–17:00</span>
+        <span class="note">组内决赛</span>
       </div>
     </div>
 
@@ -158,8 +168,11 @@ h2{font-size:26px;margin-bottom:20px;color:var(--accent)}
       <h2>③ 总决赛 <span style="font-size:18px;color:var(--sub)">BO5</span></h2>
 
       <div class="match">
-        <span>A 组冠军</span>
-        <span>B 组冠军</span>
+        <div class="teams">
+          <span>A 组冠军</span>
+          <span>B 组冠军</span>
+        </div>
+        <span class="time">7月20日（周日）15:30–17:00</span>
       </div>
 
       <div class="cup">最终冠军</div>
