@@ -17,8 +17,13 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--txt);padding:60px 20px}
 .wrapper{max-width:1400px;margin:auto;display:flex;flex-direction:column;gap:72px}
-h2{font-size:26px;margin-bottom:20px;color:var(--accent)}
 
+/* —— 标题层级 —— */
+h1{font-size:32px;color:var(--accent);text-align:center;margin-bottom:30px}
+h2{font-size:26px;margin-bottom:20px;color:var(--accent)}
+h3{font-size:20px;margin:16px 0 10px;color:var(--accent)}
+
+/* —— 通用卡片布局 —— */
 .section{display:flex;justify-content:space-between;gap:80px;flex-wrap:wrap}
 .card{
   background:var(--panel);
@@ -27,7 +32,17 @@ h2{font-size:26px;margin-bottom:20px;color:var(--accent)}
   flex:1 1 380px;
 }
 
-/* 分组 */
+/* —— Logo —— */
+.logo{
+  display:block;
+  width:70vw;
+  max-width:700px;
+  min-width:240px;
+  height:auto;
+  margin:0 auto 32px;
+}
+
+/* —— 分组 —— */
 .group-list{display:flex;gap:80px;justify-content:center}
 .group-name{font-size:22px;color:var(--accent);margin-bottom:24px;text-align:center}
 .slot{
@@ -40,7 +55,17 @@ h2{font-size:26px;margin-bottom:20px;color:var(--accent)}
   color:var(--sub);
 }
 
-/* 比赛卡片 */
+/* —— BP 规则表格 & 阵容表 —— */
+table{width:100%;border-collapse:collapse;margin:16px 0}
+th,td{border:1px solid var(--sub);padding:8px 12px;text-align:center;font-size:15px}
+th{background:var(--slot);color:var(--accent)}
+td:first-child{white-space:nowrap}
+
+/* —— 列表 —— */
+ul,ol{margin-left:24px;margin-bottom:16px}
+ul li,ol li{margin-bottom:8px;font-size:15px;line-height:1.5}
+
+/* —— 比赛卡片 —— */
 .bracket{min-width:420px;padding:38px 54px}
 .match{
   background:var(--slot);
@@ -54,31 +79,22 @@ h2{font-size:26px;margin-bottom:20px;color:var(--accent)}
 .note{display:block;color:var(--sub);font-size:14px;margin-top:2px}
 .highlight{background:var(--accent);color:#222;font-weight:bold}
 
-/* 隐藏连线 */
-.match::before,
-.match::after{display:none !important}
-
-/* 决赛 */
+/* —— 决赛卡片 —— */
 .final{flex:1 1 460px;text-align:center}
 .final .match{
-  display:flex;
-  flex-direction:column;
-  font-weight:bold;
-  background:transparent;
-  margin:26px 0 32px 0;
-  gap:8px;
+  display:flex;flex-direction:column;font-weight:bold;
+  background:transparent;margin:26px 0 32px 0;gap:8px;
 }
-.final .teams{
-  display:flex;justify-content:space-between;gap:12px
-}
+.final .teams{display:flex;justify-content:space-between;gap:12px}
 .final .teams span{
-  flex:0 0 45%;
-  background:var(--slot);
-  padding:14px 0;
-  border-radius:10px;
+  flex:0 0 45%;background:var(--slot);padding:14px 0;border-radius:10px;
 }
 .final .cup{font-size:20px;font-weight:bold;color:var(--accent);margin-top:32px}
 .small{font-size:15px;color:var(--sub);margin-top:8px}
+
+/* —— 战队介绍 —— */
+.team-block{margin-bottom:52px}
+.team-block:last-child{margin-bottom:0}
 
 @media(max-width:900px){
   .card{flex:1 1 100%}
@@ -91,6 +107,145 @@ h2{font-size:26px;margin-bottom:20px;color:var(--accent)}
 
 <body>
 <div class="wrapper">
+
+  <!-- ★ 将神下饭杯 Logo -->
+  <img src="jiangshenlogo.png" alt="将神下饭杯 Logo" class="logo">
+
+  <!-- ★ 社区与比赛规则总则 -->
+  <section class="section" id="general-rules">
+    <div class="card">
+      <h1>🎮 将神下饭杯｜社区与比赛规则总则 🏆</h1>
+      <p style="text-align:center;margin-bottom:24px;line-height:1.6">
+        版本号：v1.0（2025/07/04）<br/>
+        适用范围：所有参赛队员、裁判、解说与观赛成员
+      </p>
+
+      <h3>🧭 一、赛事定位与目标</h3>
+      <ul>
+        <li>本赛事为 <strong>非职业 · 高强度 · 娱乐竞技</strong> 的暑期社群比赛。</li>
+        <li>以「轻松氛围 + 正规规则」结合，旨在提供一次 <strong>高质量、低门槛、强互动性</strong> 的竞技体验。</li>
+        <li>所有参与成员应以 <strong>尊重对手、享受对局、共同建设社区</strong> 为基本态度。</li>
+      </ul>
+
+      <h3>🧑‍⚖️ 二、参赛资格与基本义务</h3>
+      <ul>
+        <li>每支战队需由 <strong>5–7 名选手</strong> 组成（含监管/求生替补）。</li>
+        <li>报名需通过官方表单统一提交完整信息，包括：战队名、游戏 ID、常用角色、段位等。</li>
+        <li>禁止以下行为，一经查实立即取消资格：</li>
+        <ul>
+          <li>使用外挂、脚本或其他第三方辅助程序；</li>
+          <li>代打或冒用他人账号；</li>
+          <li>比赛中故意挂机、消极游戏、辱骂对手或队友；</li>
+          <li>串改战队信息或报名虚假身份。</li>
+        </ul>
+      </ul>
+
+      <h3>🕒 三、比赛时间与流程规范</h3>
+      <ul>
+        <li>比赛统一安排于每周末 <strong>服务器时间 15:30</strong> 开始。</li>
+        <li>所有选手须于比赛开始前 <strong>15 分钟</strong> 进入指定语音频道签到、准备。</li>
+        <li>无故缺席或延迟超过 <strong>10 分钟</strong>，视为弃权。</li>
+        <li>若需更换人员或调度，请提前联系主办方协调。</li>
+      </ul>
+
+      <h3>📢 四、语音频道使用说明</h3>
+      <ul>
+        <li>比赛期间，仅可使用本群内分配的 <strong>战队语音频道</strong> 进行交流。</li>
+        <li>所有频道已设置权限，<strong>禁止串频道、偷听或恶意干扰</strong> 他队语音。</li>
+        <li>如需修改语音权限，请私信主办方处理（更改群名为统一格式如：<code>TPOF_昵称</code>）。</li>
+      </ul>
+
+      <h3>🗺️ 五、赛前摇骰与选图选边规则</h3>
+      <ul>
+        <li>赛前 <strong>1 小时</strong>，由双方代表在微信使用「摇骰子」功能，每人一次摇两个，点数高者为 <strong>主场队伍</strong>。</li>
+        <li>主场队伍拥有 <strong>第 1 局与第 3 局</strong> 的选图权；客场拥有 <strong>第 2 局</strong> 选图权。</li>
+        <li>非选图方可决定：<strong>该局先上监管或求生</strong>，并可 <strong>禁用 1 张地图</strong>。</li>
+      </ul>
+
+      <h3>🎙️ 六、解说与观赛规范</h3>
+      <ul>
+        <li>赛事将部分场次进行 <strong>直播与录像</strong>，鼓励社区积极观赛并参与 MVP 评选。</li>
+        <li>观赛人员请勿在直播中 <strong>剧透比赛局势或干扰对局节奏</strong>。</li>
+        <li>当前仍招募解说老师，欢迎非参赛成员私信报名参与。</li>
+      </ul>
+
+      <h3>🧠 七、预测活动与互动玩法</h3>
+      <ul>
+        <li>每轮比赛开放「赛果预测表单」，欢迎大家竞猜 <strong>胜负、比分与 MVP</strong>。</li>
+        <li>命中率较高的成员可获得 <strong>隐藏福利与专属表情包</strong> 奖励。</li>
+      </ul>
+
+      <h3>💬 八、争议处理与反馈机制</h3>
+      <ul>
+        <li>若发生报名、对局、BP、违规等争议，请第一时间联系主办方。</li>
+        <li>本赛事主办方保留对最终结果、处罚、规则解释的 <strong>最终权利</strong>。</li>
+        <li>欢迎在群内理性交流建议，共建更好的社区赛事平台。</li>
+      </ul>
+
+      <h3>💡 九、温馨提示</h3>
+      <ul>
+        <li>将神下饭杯的初衷是「<strong>饭局对抗、不整花活</strong>」，保持轻松心态即可收获快乐对局。</li>
+        <li>比赛再激烈，做人要稳健；角色被 Ban 也要稳住心态！</li>
+        <li>如果你热爱第五人格，又喜欢跟朋友一起战斗，那这里就是你的舞台！</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ⓪ BP 规则 -->
+  <section class="section" id="bp-rules">
+    <div class="card rules">
+      <h2>将神下饭杯｜BP 规则</h2>
+      <p>各位老师、选手们大家好：经过组委会与各战队代表多轮讨论，并参考 IVL 现行以及 COA 历届 BP 规则，结合当前版本求生/监管强度，我们最终敲定了本次将神杯的 BP 方案。请各位务必熟悉并遵照执行。</p>
+
+      <h3>一、分局 BP 配额</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>局数</th>
+            <th>监管者 Ban 位</th>
+            <th>监管者「先手禁用」求生数</th>
+            <th>求生总 Ban 位<br/>(＝先手禁用＋后续两次)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>BO1</td><td>0 位</td><td>1 位</td><td>3 位</td></tr>
+          <tr><td>BO2</td><td>1 位</td><td>2 位</td><td>4 位</td></tr>
+          <tr><td>BO3</td><td>2 位</td><td>3 位</td><td>5 位</td></tr>
+          <tr><td>BO4</td><td>3 位</td><td>4 位</td><td>6 位</td></tr>
+          <tr><td>BO5 及以后</td><td>同 BO4</td><td>同 BO4</td><td>同 BO4</td></tr>
+        </tbody>
+      </table>
+
+      <p><strong>术语说明</strong></p>
+      <ul>
+        <li>先手禁用：开局由监管方一次性锁定的求生角色数，随局数增至 <em>n</em> 个。</li>
+        <li>监管者 Ban 位：从 BO2 开始，每局额外增加 +1 个。</li>
+        <li>本赛制 <strong>无全局 BP</strong>；各局 BP 相互独立。</li>
+      </ul>
+
+      <h3>二、单局完整流程（所有 BO 通用）</h3>
+      <ol>
+        <li>监管方先手禁用 X 名求生（见上表）。</li>
+        <li>求生方依次选出第 1、2 名角色。</li>
+        <li>求生方 Ban 1 名求生。</li>
+        <li>求生方选出第 3 名角色。</li>
+        <li>求生方再 Ban 1 名求生。</li>
+        <li>求生方选出第 4 名角色（阵容确定）。</li>
+        <li>四位选手各自锁定使用角色。</li>
+        <li>求生方选择并确认天赋。</li>
+        <li>监管方最终确定出战监管者（须避开已 Ban）。</li>
+        <li>监管方调整天赋。</li>
+        <li>双方确认地图与刷点，进入对局。</li>
+      </ol>
+
+      <h3>三、务必牢记的两点</h3>
+      <ol>
+        <li>局数越往后，监管方压力越大——需一次锁掉更多求生，同时要面对求生额外 Ban 带来的阵容变化。</li>
+        <li>除「先手禁用」「监管者 Ban 位」数量外，其余流程完全一致；熟练一次，适用于整场 BO。</li>
+      </ol>
+      <p>各战队可据此提前演练 BP 节奏与阵容策略，预祝各位比赛顺利、打出风采！</p>
+    </div>
+  </section>
 
   <!-- ① 分组结果 -->
   <section class="section" id="groups">
@@ -106,8 +261,8 @@ h2{font-size:26px;margin-bottom:20px;color:var(--accent)}
         <div>
           <p class="group-name">B 组</p>
           <div class="slot">NYD</div>
-          <div class="slot">LGMM</div>
           <div class="slot">OUO</div>
+          <div class="slot">LGMM</div>
         </div>
       </div>
     </div>
@@ -143,13 +298,13 @@ h2{font-size:26px;margin-bottom:20px;color:var(--accent)}
       <h2>② B 组赛程 <span style="font-size:18px;color:var(--sub)">BO3</span></h2>
 
       <div class="match">
-        Match&nbsp;1 ｜ NYD vs LGMM
+        Match&nbsp;1 ｜ NYD vs OUO
         <span class="time">7月6日（周日）15:30–17:00</span>
         <span class="note">（胜者直通 Match&nbsp;3）</span>
       </div>
 
       <div class="match">
-        Match&nbsp;2 ｜ <span style="color:var(--sub)">Match&nbsp;1 败者</span> vs OUO
+        Match&nbsp;2 ｜ <span style="color:var(--sub)">Match&nbsp;1 败者</span> vs LGMM
         <span class="time">7月13日（周日）15:30–17:00</span>
       </div>
 
@@ -177,6 +332,113 @@ h2{font-size:26px;margin-bottom:20px;color:var(--accent)}
 
       <div class="cup">最终冠军</div>
       <p class="small">五局三胜（BO5）</p>
+    </div>
+  </section>
+
+  <!-- ④ 战队介绍 -->
+  <section class="section" id="team-rosters">
+    <div class="card">
+      <h2>④ 战队介绍</h2>
+
+      <!-- TPOF -->
+      <div class="team-block">
+        <h3>TPOF</h3>
+        <table>
+          <thead><tr><th>游戏 ID</th><th>位置</th><th>常用角色</th><th>最高段位</th></tr></thead>
+          <tbody>
+            <tr><td>TPOF_无心</td><td>求生</td><td>牛仔、教授、飞行家</td><td>六阶 V</td></tr>
+            <tr><td>TPOF_LEO</td><td>求生</td><td>慈善家、小说家、哭丑</td><td>五阶 II</td></tr>
+            <tr><td>TPOF_博文</td><td>求生</td><td>击球、牛仔、教授</td><td>五阶 III</td></tr>
+            <tr><td>TPOF_尚子</td><td>求生</td><td>玩具、拉拉</td><td>巅七</td></tr>
+            <tr><td>TPOF_xianii</td><td>求生</td><td>野人、前锋、飞行家</td><td>五阶 I</td></tr>
+            <tr><td>TPOF_小猫寿司</td><td>监管</td><td>爱哭鬼、歌剧、雕刻家</td><td>七阶</td></tr>
+            <tr><td>TPOF_DX</td><td>监管</td><td>万精油型</td><td>巅七</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- LGMM -->
+      <div class="team-block">
+        <h3>LGMM</h3>
+        <table>
+          <thead><tr><th>游戏 ID</th><th>位置</th><th>常用角色</th><th>最高段位</th></tr></thead>
+          <tbody>
+            <tr><td>LGMM_莲莲头</td><td>求生</td><td>哭泣小姐、幸运儿、蜡像师</td><td>五阶</td></tr>
+            <tr><td>LGMM_金婚</td><td>求生</td><td>勘探、牛仔、监管杰克*</td><td>巅七</td></tr>
+            <tr><td>LGMM_裴予</td><td>求生</td><td>击球、古董</td><td>巅七</td></tr>
+            <tr><td>LGMM_啄白</td><td>求生</td><td>宿伞、律师</td><td>四阶</td></tr>
+            <tr><td>LGMM_星辰</td><td>求生</td><td>佣兵、记者</td><td>巅七</td></tr>
+            <tr><td>LGMM_YU</td><td>监管</td><td>蜡像师、厂长、歌剧</td><td>巅七</td></tr>
+            <tr><td>LGMM_二弟单杀</td><td>监管</td><td>厂长、前锋</td><td>巅七</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:13px;color:var(--sub)">* 杰克属监管方，跨阵营练度说明</p>
+      </div>
+
+      <!-- SMGF -->
+      <div class="team-block">
+        <h3>SMGF</h3>
+        <table>
+          <thead><tr><th>游戏 ID</th><th>位置</th><th>常用角色</th><th>最高段位</th></tr></thead>
+          <tbody>
+            <tr><td>SMGF_光明</td><td>求生</td><td>击球、野人、勘探</td><td>巅七</td></tr>
+            <tr><td>SMGF_魏莱</td><td>求生</td><td>击球、爆轰手</td><td>五阶</td></tr>
+            <tr><td>SMGF_SMGF除怨</td><td>求生</td><td>古董、前锋、野人</td><td>五阶</td></tr>
+            <tr><td>SMGF_将星</td><td>求生</td><td>全能 OB</td><td>巅七</td></tr>
+            <tr><td>SMGF_阿苏勒</td><td>监管</td><td>厂长（多套）</td><td>巅七</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- NEWYORK DREAM -->
+      <div class="team-block">
+        <h3>NEWYORK DREAM</h3>
+        <table>
+          <thead><tr><th>游戏 ID</th><th>位置</th><th>常用角色</th><th>最高段位</th></tr></thead>
+          <tbody>
+            <tr><td>NEWYORKDREAM_心</td><td>求生</td><td>玩具商、昆虫、机械师</td><td>巅七</td></tr>
+            <tr><td>NEWYORKDREAM_月</td><td>求生</td><td>病患、空军、作曲家</td><td>巅七</td></tr>
+            <tr><td>NEWYORKDREAM_雨</td><td>求生</td><td>哭丑、前锋、飞行家</td><td>七阶</td></tr>
+            <tr><td>NEWYORKDREAM_D</td><td>求生</td><td>幸运儿、囚徒、机械师</td><td>巅七</td></tr>
+            <tr><td>NEWYORKDREAM_SH</td><td>监管</td><td>鹿头、杂货商、艾维</td><td>巅七</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- TR -->
+      <div class="team-block">
+        <h3>TR</h3>
+        <table>
+          <thead><tr><th>游戏 ID</th><th>位置</th><th>常用角色</th><th>最高段位</th></tr></thead>
+          <tbody>
+            <tr><td>TR_想想txz怎么做</td><td>求生</td><td>机械师、囚徒、勘探</td><td>巅七</td></tr>
+            <tr><td>TR_千成之约</td><td>求生</td><td>前锋、击球、律师</td><td>巅七</td></tr>
+            <tr><td>TR_of</td><td>求生</td><td>佣兵、骑士、律师</td><td>五阶 I</td></tr>
+            <tr><td>TR_weiren</td><td>求生</td><td>律师、小说家、古董</td><td>五阶 V</td></tr>
+            <tr><td>TR_挚爱</td><td>求生</td><td>骑士、小说家、调香</td><td>五阶 III</td></tr>
+            <tr><td>TR_潮落</td><td>求生</td><td>教授、律师、气象</td><td>五阶 V</td></tr>
+            <tr><td>TR_老摇摆锤</td><td>监管</td><td>歌剧、小丑、艾薇</td><td>巅七</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- OUO -->
+      <div class="team-block">
+        <h3>OUO</h3>
+        <table>
+          <thead><tr><th>游戏 ID</th><th>位置</th><th>常用角色</th><th>最高段位</th></tr></thead>
+          <tbody>
+            <tr><td>OUO_白星</td><td>求生</td><td>气象、弓箭、古董</td><td>六阶 II</td></tr>
+            <tr><td>OUO_面包</td><td>求生</td><td>慈善家、园丁、飞行家</td><td>四阶 II</td></tr>
+            <tr><td>OUO_小狼</td><td>求生</td><td>幸运儿、小女孩、园丁</td><td>七阶</td></tr>
+            <tr><td>OUO_黑仔</td><td>求生</td><td>木偶、幸运儿、玩具商</td><td>六阶 III</td></tr>
+            <tr><td>OUO_思念即地狱</td><td>双阵营</td><td>厂长、小丑、鹿头</td><td>巅七</td></tr>
+            <tr><td>OUO_风向</td><td>求生</td><td>冒险家、医生、弓箭手</td><td>巅七</td></tr>
+            <tr><td>OUO_Ice</td><td>监管</td><td>小丑、哭泣系</td><td>六阶 V</td></tr>
+          </tbody>
+        </table>
+      </div>
+
     </div>
   </section>
 
